@@ -1,0 +1,28 @@
+.headerWrapper {
+  width: 1140px;
+  display: flex;
+  justify-content: start;
+  margin: 60px auto 70px;
+}
+
+.header > a {
+  display: flex;
+  align-items: center;
+}
+
+.header > a > :not(:last-child) {
+  margin-right: 20px;
+}
+
+.title {
+  font-weight: normal;
+  font-size: 80px;
+  color: #f6f6f5;
+}
+
+@media (max-width: 1250px) {
+  .headerWrapper {
+    width: auto;
+    justify-content: center;
+  }
+}

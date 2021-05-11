@@ -1,0 +1,20 @@
+.items {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 1250px) {
+  .items {
+    flex-direction: column;
+  }
+
+  .items > :not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .status {
+    display: flex;
+    justify-content: center;
+  }
+}

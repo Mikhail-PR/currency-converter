@@ -1,0 +1,23 @@
+.item {
+  min-width: 330px;
+}
+
+.title {
+  font-weight: normal;
+  color: #f6f6f5;
+  background-color: #d7a968;
+  border-bottom: 3px solid #666666;
+  padding: 14px 11px;
+  margin-bottom: 13px;
+}
+
+.value {
+  color: #000000;
+}
+
+.title,
+.value {
+  line-height: 35px;
+
+  text-align: center;
+}

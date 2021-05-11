@@ -1,0 +1,41 @@
+.selectWrapper {
+  width: 330px;
+  position: relative;
+}
+
+.selectWrapper::after {
+  content: url("./rectangle-img.svg");
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.selectList {
+  appearance: none;
+  overflow: hidden;
+}
+
+.value {
+  padding: 14px 38px;
+}
+
+.selectList {
+  padding: 12px 50px 12px 22px;
+}
+
+.value,
+.selectList {
+  width: 330px;
+  height: 63px;
+  background-color: #f6f6f5;
+  border: 2px solid #434f4d;
+  border-radius: 10px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+}
+
+.value:focus,
+.selectList:focus {
+  outline: none;
+}

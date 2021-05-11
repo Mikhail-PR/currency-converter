@@ -1,0 +1,15 @@
+.gridContainer {
+  max-width: 1140px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(95px, auto);
+  row-gap: 95px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 1250px) {
+  .gridContainer {
+    width: 385px;
+  }
+}

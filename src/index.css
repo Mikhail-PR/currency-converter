@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  background-size: cover;
+  background: linear-gradient(180deg, #4a5957 0%, #353d3c 100%) no-repeat;
+}

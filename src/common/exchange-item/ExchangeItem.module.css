@@ -1,0 +1,9 @@
+.item,
+.exchange {
+  display: flex;
+}
+
+.exchange > :not(:last-child),
+.item > :not(:last-child) {
+  margin-right: 5px;
+}
