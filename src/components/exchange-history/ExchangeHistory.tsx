@@ -11,13 +11,11 @@ import { getHistory } from '../../redux/actions/converts';
 
 const ExchangeHistory: React.FC = () => {
   const dispath = useDispatch();
+  const history = useTypesSelector((state) => state.converts.history);
 
   React.useEffect(() => {
     if (history.length === 0) dispath(getHistory());
   }, [])
-
-  const history = useTypesSelector((state) => state.converts.history);
-  console.log(styles.gridItem)
 
   return (
     <Card title='История конвертации' styleClass={styles.gridItem} isDarck={true}>

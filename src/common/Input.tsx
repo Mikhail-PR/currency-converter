@@ -7,7 +7,7 @@ type InputProps = {
 
 const Input: React.FC<InputProps> = ({ value, onInput }) => {
   return (
-    <input className={styles.value}
+    <input className={styles.input}
       onChange={(e) => onInput(e)}
       type="number" value={value} />
   );

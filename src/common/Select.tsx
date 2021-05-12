@@ -12,7 +12,7 @@ const Select: React.FC<SelectProps> = ({ value, options, onSelect }) => {
   return (
     <select value={value.value}
       onChange={(e) => onSelect(e)}
-      className={styles.selectList}>
+      className={styles.select}>
       <option
         className={styles.item}
         value={value.value}>{value.text}
