@@ -46,7 +46,7 @@ const CurrencyConverter: React.FC = () => {
   }, []);
 
   return (
-    <Card title='Конвертер валют'>
+    <Card title='Конвертер валют' styleClass={styles.gridItem}>
       <div className={styles.content} >
         {converts.map((convertItem: ConvertItemState, i: number) => {
           return (

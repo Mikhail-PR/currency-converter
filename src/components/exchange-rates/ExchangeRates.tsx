@@ -17,7 +17,7 @@ const ExchangeRates: React.FC = () => {
   }, []);
 
   return (
-    <Card title='Курс валют ЦБ РФ'>
+    <Card title='Курс валют ЦБ РФ' styleClass={styles.gridItem}>
       {isLoaded ?
         <div className={styles.items}>
           {currencies.map(({ name, abbreviation, rate }: Currency, i: number) => {

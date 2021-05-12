@@ -1,8 +1,12 @@
+.gridItem {
+  grid-column: 1 / span 6;
+}
+
 .headerWrapper {
-  width: 1140px;
+  width: 100%;
   display: flex;
   justify-content: start;
-  margin: 60px auto 70px;
+  padding-top: 60px;
 }
 
 .header > a {

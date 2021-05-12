@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   return (
-    <div className={styles.headerWrapper}>
+    <div className={styles.headerWrapper + ' ' + styles.gridItem}>
       <div className={styles.header}>
         <Link to={process.env.PUBLIC_URL + '/'}>
           <img src={logo} alt="Курс валют" />

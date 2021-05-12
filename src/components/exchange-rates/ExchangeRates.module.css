@@ -1,3 +1,7 @@
+.gridItem {
+  grid-column: 1 / span 6;
+}
+
 .items {
   display: flex;
   justify-content: space-between;

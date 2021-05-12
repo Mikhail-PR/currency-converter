@@ -11,3 +11,20 @@ body {
   background-size: cover;
   background: linear-gradient(180deg, #4a5957 0%, #353d3c 100%) no-repeat;
 }
+
+#root {
+  max-width: 1140px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+   /* grid-template-rows: repeat(2, 100px); */
+   row-gap: 95px;
+
+   margin: 0 auto;
+}
+
+
+@media (max-width: 1250px) {
+  #root  {
+    max-width:  600px;
+  }
+}

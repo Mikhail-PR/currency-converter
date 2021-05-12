@@ -17,8 +17,10 @@ const ExchangeHistory: React.FC = () => {
   }, [])
 
   const history = useTypesSelector((state) => state.converts.history);
+  console.log(styles.gridItem)
+
   return (
-    <Card title='История конвертации' isDarck={true}>
+    <Card title='История конвертации' styleClass={styles.gridItem} isDarck={true}>
       <div className={styles.wrapper}>
         <div className={styles.content}>
           {history.length !== 0 ?
