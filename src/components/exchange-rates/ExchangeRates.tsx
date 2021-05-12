@@ -23,13 +23,13 @@ const ExchangeRates: React.FC = () => {
           {currencies.map(({ name, abbreviation, rate }: Currency, i: number) => {
             if (abbreviation !== 'RUB') {
               return (
-                <div key={i}>
-                  <RateItem
-                    name={name}
-                    abbreviation={abbreviation}
-                    rate={rate}
-                  />
-                </div>)
+                <RateItem
+                  name={name}
+                  abbreviation={abbreviation}
+                  rate={rate}
+                  key={i}
+                />
+              )
             }
           })}
         </div> :

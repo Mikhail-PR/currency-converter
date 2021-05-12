@@ -3,18 +3,15 @@
 }
 
 .items {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
+  align-items: center;
 }
 
 @media (max-width: 1250px) {
   .items {
-    flex-direction: column;
-  }
-
-  .items > :not(:last-child) {
-    margin-right: 0;
-    margin-bottom: 50px;
+    grid-template-columns: 1fr;
   }
 
   .status {

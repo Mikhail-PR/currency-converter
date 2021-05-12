@@ -1,5 +1,6 @@
 .gridItem {
   grid-column: 1 / span 6;
+  margin-bottom: -25px;
 }
 
 .headerWrapper {

@@ -4,7 +4,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 330px 330px;
+  grid-template-columns: 1fr 1fr;
   grid-row-gap: 15px;
   grid-column-gap: 50px;
   align-items: center;
