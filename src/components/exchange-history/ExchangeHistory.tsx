@@ -37,11 +37,9 @@ const ExchangeHistory: React.FC = () => {
               })}
             </ul> :
             <div>История пуста</div>}
-          <div className={styles.btn}>
-            <Link to={process.env.PUBLIC_URL + '/converter'}>
-              <div>Конвертор валют</div>
-            </Link>
-          </div>
+          <Link to={process.env.PUBLIC_URL + '/converter'}>
+            <div className={styles.btn}>Конвертор валют</div>
+          </Link>
         </div>
         <img className={styles.img} src={img} />
       </div>
