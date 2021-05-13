@@ -62,9 +62,10 @@ const CurrencyConverter: React.FC = () => {
             <ConvertItem
               value={convertItem.value}
               onInput={(e: any) => {
-                dispath(changeValue(i, +(e.target.value)));
+                const value = Math.abs(+(e.target.value));
+                dispath(changeValue(i, value));
 
-                if (+(e.target.value)) {
+                if (value) {
                   const calculatedItemsId: number[] = [];
                   allConvert(i, calculatedItemsId);
                   dispath(setHistory(calculatedItemsId[0], calculatedItemsId[1]));

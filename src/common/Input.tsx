@@ -9,7 +9,7 @@ const Input: React.FC<InputProps> = ({ value, onInput }) => {
   return (
     <input className={styles.input}
       onChange={(e) => onInput(e)}
-      type="number" value={value} />
+      type="number" min="0" value={value} />
   );
 }
 
