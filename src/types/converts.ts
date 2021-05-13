@@ -38,10 +38,12 @@ interface ChangeValueAction {
 
 interface ConvertAction {
   type: ConvertsActionTypes.CONVERT;
+  payload: { id: number };
 }
 
 interface SetHistory {
   type: ConvertsActionTypes.SET_HISTORY;
+  payload: { convertableId: number, calculatedId: number };
 }
 
 interface GetHistory {

@@ -34,7 +34,7 @@ const converts = (state = initialState, action: ConvertsAction) => {
   }
 
   if (action.type === ConvertsActionTypes.CHANGE_VALUE) {
-    const items = [...state.items]
+    const items = [...state.items];
     items[action.payload.id].value = action.payload.newValue;
 
     items.forEach((item: any) => item.isConvertable = false);
@@ -47,42 +47,39 @@ const converts = (state = initialState, action: ConvertsAction) => {
   }
 
   if (action.type === ConvertsActionTypes.CONVERT) {
-    const items = state.items;
-    const convertibleItem = items.find((item: any) => item.isConvertable === true)
+    const items = [...state.items];
+    const convertibleItem = items.find((item: any) => item.isConvertable === true);
+    const calculateItem = items[action.payload.id];
 
     if (!convertibleItem) return state;
 
     const convertibleValue = convertibleItem.value;
     const convertibleRate = convertibleItem.currency.rate;
 
-    const calculateItems = items.map(((item: any) => {
-      if (!item.isConvertable) {
-        return {
-          ...item,
-          value: convertibleItem.currency.abbreviation === 'RUB' ?
-            +((convertibleValue / item.currency.rate).toFixed(2)) :
-            +((convertibleValue * convertibleRate / item.currency.rate).toFixed(2))
-        }
-      }
-      return item;
-    }));
+    calculateItem.value = convertibleItem.currency.abbreviation === 'RUB' ?
+      +((convertibleValue / calculateItem.currency.rate).toFixed(2)) :
+      +((convertibleValue * convertibleRate / calculateItem.currency.rate).toFixed(2))
 
     return {
       ...state,
-      items: calculateItems,
+      items,
     }
   }
 
   if (action.type === ConvertsActionTypes.SET_HISTORY) {
+    const items = [...state.items];
+    const convertableId = action.payload.convertableId;
+    const calculatedId = action.payload.calculatedId;
+
     const history = [
-      [{ currency: state.items[0].currency.abbreviation, value: state.items[0].value },
-      { currency: state.items[1].currency.abbreviation, value: state.items[1].value }],
-
-      [{ currency: state.items[0].currency.abbreviation, value: state.items[0].value },
-      { currency: state.items[2].currency.abbreviation, value: state.items[2].value }],
-
-      [{ currency: state.items[1].currency.abbreviation, value: state.items[1].value },
-      { currency: state.items[2].currency.abbreviation, value: state.items[2].value }],
+      [{
+        currency: items[convertableId].currency.abbreviation,
+        value: items[convertableId].value
+      },
+      {
+        currency: items[calculatedId].currency.abbreviation,
+        value: items[calculatedId].value
+      },],
 
       ...state.history,
     ];

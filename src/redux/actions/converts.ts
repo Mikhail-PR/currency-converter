@@ -13,12 +13,14 @@ export const changeValue = (id: number, newValue: number) => ({
   payload: { id, newValue },
 });
 
-export const convert = () => ({
+export const convert = (id: number) => ({
   type: 'CONVERT',
+  payload: { id },
 });
 
-export const setHistory = () => ({
+export const setHistory = (convertableId: number, calculatedId: number) => ({
   type: 'SET_HISTORY',
+  payload: { convertableId, calculatedId },
 });
 
 export const getHistory = () => ({

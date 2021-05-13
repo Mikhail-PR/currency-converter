@@ -45,6 +45,16 @@ const CurrencyConverter: React.FC = () => {
     }
   }, []);
 
+  const allConvert = (itemId: number, calculatedItemsId?: number[]) => {
+    converts.forEach((convertItem: ConvertItemState, id: number) => {
+      if (id !== itemId) {
+        dispath(convert(id));
+        dispath(setHistory(itemId, id));
+        calculatedItemsId && calculatedItemsId.push(id);
+      }
+    });
+  }
+
   return (
     <Card title='Конвертер валют' styleClass={styles.gridItem}>
       <div className={styles.content} >
@@ -53,15 +63,17 @@ const CurrencyConverter: React.FC = () => {
             <ConvertItem
               value={convertItem.value}
               onInput={(e: any) => {
-                dispath(changeValue(i, +(e.target.value)))
+                dispath(changeValue(i, +(e.target.value)));
 
                 if (+(e.target.value)) {
-                  dispath(convert())
-                  dispath(setHistory())
+                  const calculatedItemsId: number[] = [];
+                  allConvert(i, calculatedItemsId);
+                  dispath(setHistory(calculatedItemsId[0], calculatedItemsId[1]));
+
                 } else {
                   converts.forEach((item: ConvertItemState, i: number) => {
                     if (item !== convertItem) {
-                      dispath(changeValue(i, 0))
+                      dispath(changeValue(i, 0));
                     }
                   })
                 }
@@ -72,13 +84,20 @@ const CurrencyConverter: React.FC = () => {
               options={unselectedСurrencies}
 
               onSelect={(e: any) => {
-                const currency = currencies.find((currency: Currency) => currency.abbreviation === e.target.value)
-                dispath(changeCurrency(i, currency))
-                dispath(filterUnselectedItems(currencies))
+                const currency = currencies.find((currency: Currency) => currency.abbreviation === e.target.value);
+                dispath(changeCurrency(i, currency));
+                dispath(filterUnselectedItems(currencies));
 
                 if (convertItem.value) {
-                  dispath(convert())
-                  dispath(setHistory())
+                  if (!convertItem.isConvertable) {
+                    const convertableItemId = converts.findIndex(({ isConvertable }: ConvertItemState) => isConvertable);
+                    dispath(convert(i));
+                    dispath(setHistory(convertableItemId, i));
+                  }
+
+                  else {
+                    allConvert(i);
+                  }
                 }
               }}
             />
