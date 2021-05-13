@@ -40,18 +40,23 @@ const CurrencyConverter: React.FC = () => {
         unsubscribe();
       })
     } else {
-      initItems(currencies);
+      const isInit = converts.some(({ currency }: ConvertItemState) => currency.rate);
+      if (!isInit) {
+        initItems(currencies);
+      }
     }
   }, []);
 
-  const allConvert = (itemId: number, calculatedItemsId?: number[]) => {
+  const allConvert = (itemId: number) => {
+    const calculatedItemsId: number[] = [];
     converts.forEach((convertItem: ConvertItemState, id: number) => {
       if (id !== itemId) {
         dispath(convert(id));
         dispath(setHistory(itemId, id));
-        calculatedItemsId && calculatedItemsId.push(id);
+        calculatedItemsId.push(id);
       }
     });
+    dispath(setHistory(calculatedItemsId[0], calculatedItemsId[1]));
   }
 
   return (
@@ -66,10 +71,7 @@ const CurrencyConverter: React.FC = () => {
                 dispath(changeValue(i, value));
 
                 if (value) {
-                  const calculatedItemsId: number[] = [];
-                  allConvert(i, calculatedItemsId);
-                  dispath(setHistory(calculatedItemsId[0], calculatedItemsId[1]));
-
+                  allConvert(i);
                 } else {
                   converts.forEach((item: ConvertItemState, i: number) => {
                     if (item !== convertItem) {
@@ -93,9 +95,7 @@ const CurrencyConverter: React.FC = () => {
                     const convertableItemId = converts.findIndex(({ isConvertable }: ConvertItemState) => isConvertable);
                     dispath(convert(i));
                     dispath(setHistory(convertableItemId, i));
-                  }
-
-                  else {
+                  } else {
                     allConvert(i);
                   }
                 }
