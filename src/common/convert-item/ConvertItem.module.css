@@ -1,26 +1,13 @@
-.selectWrapper {
-  width: 330px;
-  position: relative;
-}
-
-.selectWrapper::after {
-  content: url("./rectangle-img.svg");
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
-
 .select {
   appearance: none;
   overflow: hidden;
+  padding: 12px 50px 12px 22px;
+  background: url("./dropdown-arrow-img.svg") no-repeat calc(100% - 13px)
+    calc(50% + 5px);
 }
 
 .input {
   padding: 14px 38px;
-}
-
-.select {
-  padding: 12px 50px 12px 22px;
 }
 
 .input,

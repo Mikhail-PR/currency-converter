@@ -1,4 +1,3 @@
-import styles from './ConvertItem.module.css';
 import Select from '../Select';
 import Input from '../Input';
 
@@ -14,20 +13,18 @@ const ConvertItem: React.FC<ConvertItemProps> = ({ value, onInput, currency, opt
   return (
     <>
       <Input value={value} onInput={onInput} />
-      <div className={styles.selectWrapper}>
-        <Select
-          value={{
-            value: currency.abbreviation,
-            text: `${currency.name}, ${currency.abbreviation}`,
-          }}
-          options={options.map(option => {
-            return {
-              value: option.abbreviation,
-              text: `${option.name}, ${option.abbreviation}`
-            }
-          })}
-          onSelect={onSelect} />
-      </div>
+      <Select
+        value={{
+          value: currency.abbreviation,
+          text: `${currency.name}, ${currency.abbreviation}`,
+        }}
+        options={options.map(option => {
+          return {
+            value: option.abbreviation,
+            text: `${option.name}, ${option.abbreviation}`
+          }
+        })}
+        onSelect={onSelect} />
     </>
   );
 }
