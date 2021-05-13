@@ -7,6 +7,11 @@
   position: relative;
 }
 
+.content {
+  z-index: 1;
+  position: relative;
+}
+
 .content > :not(:last-child) {
   margin-bottom: 35px;
 }

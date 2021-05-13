@@ -19,7 +19,7 @@ const CurrencyConverter: React.FC = () => {
 
   const initItems = (items: Currency[]) => {
     items.forEach((currency: Currency, i: number) => {
-      if (i < items.length - 1) dispath(changeCurrency(i, currency))
+      if (i < items.length - 1) dispath(changeCurrency(i, currency));
     })
     dispath(filterUnselectedItems(items));
   }
@@ -28,19 +28,18 @@ const CurrencyConverter: React.FC = () => {
     if (!isLoaded) {
       dispath(getRates());
 
-      let currentCurrencies: boolean;
+      let curIsLoaded: boolean;
       const unsubscribe = store.subscribe(() => {
-        let previousCurrencies = currentCurrencies;
-        currentCurrencies = store.getState().rates.isLoaded;
-        const currencies = store.getState().rates.currencies;
+        let prevIsLoaded = curIsLoaded;
+        curIsLoaded = store.getState().rates.isLoaded;
 
-        if (previousCurrencies !== currentCurrencies) {
+        if (prevIsLoaded !== curIsLoaded) {
+          const currencies = store.getState().rates.currencies;
           initItems(currencies);
         }
         unsubscribe();
       })
-    }
-    else {
+    } else {
       initItems(currencies);
     }
   }, []);
